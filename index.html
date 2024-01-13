@@ -5,24 +5,46 @@ welcome to clicker mania
 
 <!--
 <p>clicks: <span id="clicks">0</span></p>
+<p>diamond_click_cost: <span id="diamond_click_cost">0</span></p>
+<p>clicks_until_next_diamond: <span id="clicks_until_next_diamond">0</span></p>
 -->
 
 <button id="addMoney" onclick="addToMoney(1)">Click for Money</button>
+
+<button id="buyDiamondUpgrade1" onclick="upgradeDiamond1()">Buy First Diamond Upgrade [cost: 5 diamonds]</button>
 
 <script>
     var money = 0;
     var clicks = 0;
     var diamonds = 0;
+    var diamond_click_cost=50;
+    var clicks_until_next_diamond=diamond_click_cost;
+    var bought_diamond_upgrade1 = 0;
 
-    function addToMoney(amount){
-        clicks = clicks + 1;
-        if (clicks%50 == 0) {
-            diamonds=diamonds+1;
-        }
-        money = money + amount;
-        document.getElementById("money").innerHTML = money;
-        //document.getElementById("clicks").innerHTML = clicks;
-        document.getElementById("diamonds").innerHTML = diamonds;
+function addToMoney(amount){
+    clicks = clicks + 1;
+    clicks_until_next_diamond = clicks_until_next_diamond -1;
+    if (clicks_until_next_diamond <= 0) {
+        diamonds=diamonds+1;
+        clicks_until_next_diamond=diamond_click_cost;
     }
+    money = money + amount;
+    document.getElementById("money").innerHTML = money;
+    document.getElementById("clicks").innerHTML = clicks;
+    document.getElementById("diamonds").innerHTML = diamonds;
+    document.getElementById("diamond_click_cost").innerHTML = diamond_click_cost;
+    document.getElementById("clicks_until_next_diamond").innerHTML = clicks_until_next_diamond;
+}
+
+function upgradeDiamond1(){
+    if(diamonds >= 5 && !bought_diamond_upgrade1){
+        bought_diamond_upgrade1 = 1;
+        diamonds = diamonds - 5;
+        diamond_click_cost = 45;
+        document.getElementById("diamonds").innerHTML = diamonds;
+        document.getElementById("diamond_click_cost").innerHTML = diamond_click_cost;
+        document.getElementById("clicks_until_next_diamond").innerHTML = clicks_until_next_diamond;
+    }
+}
 
 </script>
