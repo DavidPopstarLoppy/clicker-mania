@@ -1,3 +1,14 @@
 welcome to clicker mania
 
 <p>money: <span id="money">0</span></p>
+
+<button id="addMoney" onclick="addToMoney(1)">Click for Money</button>
+
+<script>
+    var money = 0;
+    function addToMoney(amount){
+        money = money + amount;
+        document.getElementById("money").innerHTML = money;
+    }
+
+</script>
