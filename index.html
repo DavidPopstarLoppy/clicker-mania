@@ -1,14 +1,28 @@
 welcome to clicker mania
 
 <p>money: <span id="money">0</span></p>
+<p>diamonds: <span id="diamonds">0</span></p>
+
+<!--
+<p>clicks: <span id="clicks">0</span></p>
+-->
 
 <button id="addMoney" onclick="addToMoney(1)">Click for Money</button>
 
 <script>
     var money = 0;
+    var clicks = 0;
+    var diamonds = 0;
+
     function addToMoney(amount){
+        clicks = clicks + 1;
+        if (clicks%50 == 0) {
+            diamonds=diamonds+1;
+        }
         money = money + amount;
         document.getElementById("money").innerHTML = money;
+        //document.getElementById("clicks").innerHTML = clicks;
+        document.getElementById("diamonds").innerHTML = diamonds;
     }
 
 </script>
