@@ -16,11 +16,13 @@ welcome to clicker mania
 
 <button id="buygemUpgrade1" onclick="upgradegem1()">Buy First gem Upgrade [cost: 5 gems]</button>
 
+<button id="buyCrystal" onclick="buyCrystal()">Buy crystal [cost: 100 gems]</button>
+
 <script>
     var money = 0;
     var clicks = 0;
     var gems = 0;
-    var crystal = 0;
+    var crystals = 0;
     var gem_click_cost=50;
     var clicks_until_next_gem=gem_click_cost;
     var gem_upgrade1 = 0;
@@ -51,4 +53,15 @@ function upgradegem1(){
     }
 }
 
+function buyCrystal(){
+    if(gems >= 100){
+        gems = gems - 100;
+        crystals = crystals + 1;
+        document.getElementById("gems").innerHTML = gems;
+        document.getElementById("crystals").innerHTML = crystals;
+        //document.getElementById("clicks_until_next_gem").innerHTML = clicks_until_next_gem;
+    }
+}
+
 </script>
+
