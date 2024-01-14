@@ -1,4 +1,4 @@
-welcome to clicker mania
+welcome to clicker mania 1.0.2 1 bug fix 5 upgrades
 <p>do <span id="gem_click_cost">50</span> clicks then you will get 1 gem
 </p>
 
@@ -21,12 +21,15 @@ welcome to clicker mania
 <script>
     var money = 0;
     var clicks = 0;
-    var gems = 0;
+    var gems = 1000;
     var crystals = 0;
     var gem_click_cost=50;
     var clicks_until_next_gem=gem_click_cost;
     var gem_upgrade1 = 0;
     var gem_upgrade2 = 0;
+    var gem_upgrade3 = 0;
+    var gem_upgrade4 = 0;
+    var gem_upgrade5 = 0;
 
 function addToMoney(amount){
     clicks = clicks + 1;
@@ -50,16 +53,38 @@ function buyGemUpgrade(){
         gem_click_cost = 45;
         document.getElementById("gems").innerHTML = gems;
         document.getElementById("gem_click_cost").innerHTML = gem_click_cost;
-        document.getElementById("upgradeText").innerHTML = "Buy Second gem Upgrade [cost 10]";
+        document.getElementById("upgradeText").innerHTML = "Buy Second gem Upgrade [cost 10 gems]";
     } else if(gems >= 10 && !gem_upgrade2){
         gem_upgrade2 = 1;
         gems = gems - 10;
         gem_click_cost = 40;
         document.getElementById("gems").innerHTML = gems;
         document.getElementById("gem_click_cost").innerHTML = gem_click_cost;
-        document.getElementById("upgradeText").innerHTML = "Buy third gem Upgrade [cost 25]";
+        document.getElementById("upgradeText").innerHTML = "Buy third gem Upgrade [cost 25 gems]";
+    } else if(gems >= 25 && !gem_upgrade3){
+        gem_upgrade3 = 1;
+        gems = gems - 25;
+        gem_click_cost = 35;
+        document.getElementById("gems").innerHTML = gems;
+        document.getElementById("gem_click_cost").innerHTML = gem_click_cost;
+        document.getElementById("upgradeText").innerHTML = "Buy fourth gem Upgrade [cost 50 gems]";
+    } else if(gems >= 50 && !gem_upgrade4){
+        gem_upgrade4 = 1;
+        gems = gems - 50;
+        gem_click_cost = 30;
+        document.getElementById("gems").innerHTML = gems;
+        document.getElementById("gem_click_cost").innerHTML = gem_click_cost;
+        document.getElementById("upgradeText").innerHTML = "Buy fifth gem Upgrade [cost 1 crystal]";
+    } else if(crystals >= 1 && !gem_upgrade5){
+        gem_upgrade5 = 1;
+        crystals = crystals - 1;
+        gem_click_cost = 25;
+        document.getElementById("crystals").innerHTML = crystals;
+        document.getElementById("gem_click_cost").innerHTML = gem_click_cost;
+        document.getElementById("upgradeText").innerHTML = "Gem Upgrades [MAX]";
+        document.getElementById("buygemUpgrade").disabled = true;
     }
-}
+}  
 
 function buyCrystal(){
     if(gems >= 100){
