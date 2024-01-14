@@ -1,10 +1,11 @@
-welcome to clicker mania 1.0.2 1 bug fix 5 upgrades
+welcome to clicker mania 1.0.3 1 bug fix 1 material amethyst
 <p>do <span id="gem_click_cost">50</span> clicks then you will get 1 gem
 </p>
 
 <p>money: <span id="money">0</span></p>
 <p>gems: <span id="gems">0</span></p>
 <p>crystals: <span id="crystals">0</span></p>
+<p>amethyst: <span id="amethyst">0</span></p>
 
 <!--
 <p>clicks: <span id="clicks">0</span></p>
@@ -18,11 +19,14 @@ welcome to clicker mania 1.0.2 1 bug fix 5 upgrades
 
 <button id="buyCrystal" onclick="buyCrystal()">Buy crystal [cost: 100 gems]</button>
 
+<button id="buyAmethyst" onclick="buyAmethyst()">Buy amethyst [cost: 50 coins]</button>
+
 <script>
     var money = 0;
     var clicks = 0;
-    var gems = 200;
+    var gems = 0;
     var crystals = 0;
+    var amethyst = 0;
     var gem_click_cost=50;
     var clicks_until_next_gem=gem_click_cost;
     var gem_upgrade1 = 0;
@@ -94,6 +98,15 @@ function buyCrystal(){
         document.getElementById("gems").innerHTML = gems;
         document.getElementById("crystals").innerHTML = crystals;
         //document.getElementById("clicks_until_next_gem").innerHTML = clicks_until_next_gem;
+    }
+}
+
+function buyAmethyst(){
+    if(money >= 50){
+        money = money - 50;
+        amethyst = amethyst + 1;
+        document.getElementById("money").innerHTML = money;
+        document.getElementById("amethyst").innerHTML = amethyst;
     }
 }
 
