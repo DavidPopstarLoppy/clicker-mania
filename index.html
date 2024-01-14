@@ -14,7 +14,7 @@ welcome to clicker mania
 
 <button id="addMoney" onclick="addToMoney(1)">Click for Money</button>
 
-<button id="buygemUpgrade1" onclick="upgradegem1()">Buy First gem Upgrade [cost: 5 gems]</button>
+<button id="buygemUpgrade" onclick="buyGemUpgrade()"><span id="upgradeText">Buy First gem Upgrade [cost: 5 gems]</span></button>
 
 <button id="buyCrystal" onclick="buyCrystal()">Buy crystal [cost: 100 gems]</button>
 
@@ -26,6 +26,7 @@ welcome to clicker mania
     var gem_click_cost=50;
     var clicks_until_next_gem=gem_click_cost;
     var gem_upgrade1 = 0;
+    var gem_upgrade2 = 0;
 
 function addToMoney(amount){
     clicks = clicks + 1;
@@ -42,14 +43,21 @@ function addToMoney(amount){
     //document.getElementById("clicks_until_next_gem").innerHTML = clicks_until_next_gem;
 }
 
-function upgradegem1(){
+function buyGemUpgrade(){
     if(gems >= 5 && !gem_upgrade1){
         gem_upgrade1 = 1;
         gems = gems - 5;
         gem_click_cost = 45;
         document.getElementById("gems").innerHTML = gems;
         document.getElementById("gem_click_cost").innerHTML = gem_click_cost;
-        //document.getElementById("clicks_until_next_gem").innerHTML = clicks_until_next_gem;
+        document.getElementById("upgradeText").innerHTML = "Buy Second gem Upgrade [cost 10]";
+    } else if(gems >= 10 && !gem_upgrade2){
+        gem_upgrade2 = 1;
+        gems = gems - 10;
+        gem_click_cost = 40;
+        document.getElementById("gems").innerHTML = gems;
+        document.getElementById("gem_click_cost").innerHTML = gem_click_cost;
+        document.getElementById("upgradeText").innerHTML = "Buy third gem Upgrade [cost 25]";
     }
 }
 
