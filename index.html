@@ -154,7 +154,7 @@ function buyMoneyMultiplier(){
     if(amethyst_shard >= money_multiplier_cost_amethyst_shards){
         amethyst_shard = amethyst_shard - money_multiplier_cost_amethyst_shards;
         money_multiplier = money_multiplier * 2;
-        money_multiplier_cost_amethyst_shards = Math.round(money_multiplier_cost_amethyst_shards *2.5);
+        money_multiplier_cost_amethyst_shards = Math.round(money_multiplier_cost_amethyst_shards *3.25);
         
         document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
         document.getElementById("money_multiplier").innerHTML = money_multiplier;
