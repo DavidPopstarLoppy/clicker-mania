@@ -1,11 +1,12 @@
-welcome to clicker mania 1.0.3 1 bug fix 1 material amethyst
+welcome to clicker mania 1.0.4 1 bug fix 2 materials Amethyst shard and amethyst
 <p>do <span id="gem_click_cost">50</span> clicks then you will get 1 gem
 </p>
 
 <p>money: <span id="money">0</span></p>
 <p>gems: <span id="gems">0</span></p>
 <p>crystals: <span id="crystals">0</span></p>
-<p>amethyst: <span id="amethyst">0</span></p>
+<p>Amethyst: <span id="amethyst">0</span></p>
+<p>Amethyst shard: <span id="amethyst_shard">0</span></p>
 
 <!--
 <p>clicks: <span id="clicks">0</span></p>
@@ -19,13 +20,16 @@ welcome to clicker mania 1.0.3 1 bug fix 1 material amethyst
 
 <button id="buyCrystal" onclick="buyCrystal()">Buy crystal [cost: 100 gems]</button>
 
-<button id="buyAmethyst" onclick="buyAmethyst()">Buy amethyst [cost: 50 coins]</button>
+<button id="buyAmethystShard" onclick="buyAmethystShard()">Buy Amethyst shard [cost: 50 money]</button>
+
+<button id="buyAmethyst" onclick="buyAmethyst()">buyAmethyst [cost: 10 Amethyst shards]</button>
 
 <script>
     var money = 0;
     var clicks = 0;
     var gems = 0;
     var crystals = 0;
+    var amethyst_shard = 0;
     var amethyst = 0;
     var gem_click_cost=50;
     var clicks_until_next_gem=gem_click_cost;
@@ -101,12 +105,21 @@ function buyCrystal(){
     }
 }
 
-function buyAmethyst(){
+function buyAmethystShard(){
     if(money >= 50){
         money = money - 50;
-        amethyst = amethyst + 1;
+        amethyst_shard = amethyst_shard + 1;
         document.getElementById("money").innerHTML = money;
+        document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
+    }
+}
+
+function buyAmethyst(){
+    if(amethyst_shard >= 10){
+        amethyst_shard = amethyst_shard - 10;
+        amethyst = amethyst + 1;
         document.getElementById("amethyst").innerHTML = amethyst;
+        document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
     }
 }
 
