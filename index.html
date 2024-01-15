@@ -1,4 +1,4 @@
-welcome to clicker mania 1.0.5 1 bug fix
+welcome to clicker mania 1.0.6 1 matirial
 <p>do <span id="gem_click_cost">50</span> clicks then you will get 1 gem
 </p>
 
@@ -7,6 +7,7 @@ welcome to clicker mania 1.0.5 1 bug fix
 <p>crystals: <span id="crystals">0</span></p>
 <p>Amethyst: <span id="amethyst">0</span></p>
 <p>Amethyst shard: <span id="amethyst_shard">0</span></p>
+<p>emerald: <span id="emerald">0</span></p>
 <p>Money Multipier: <span id="money_multiplier">1</span></p>
 
 <!--
@@ -25,6 +26,8 @@ welcome to clicker mania 1.0.5 1 bug fix
 
 <button id="buyAmethyst" onclick="buyAmethyst()">buyAmethyst [cost: 100 Amethyst shards]</button>
 
+<button id="buyEmerald" onclick="buyEmerald()">buyEmerald [cost: 500 Amethyst shards 1million coins and 10 gems]</button>
+
 <button id="buyAutoClicker" onclick="buyAutoClicker()">buyAutoClicker [cost: <span id="auto_clicker_cost_amethyst_shards">2</span> Amethyst shards]</button>
 
 <button id="buyMoneyMultiplier" onclick="buyMoneyMultiplier()">buyMoneyMultiplier [cost: <span id="money_multiplier_cost_amethyst_shards">2</span> Amethyst shards]</button>
@@ -37,6 +40,7 @@ welcome to clicker mania 1.0.5 1 bug fix
     var crystals = 0;
     var amethyst_shard = 0;
     var amethyst = 0;
+    var emerald = 0;
     var gem_click_cost=50;
     var clicks_until_next_gem=gem_click_cost;
     var gem_upgrade1 = 0;
@@ -126,15 +130,27 @@ function buyAmethystShard(){
         document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
     }
 }
-
-function buyAmethyst(){
-    if(amethyst_shard >= 100){
-        amethyst_shard = amethyst_shard - 100;
-        amethyst = amethyst + 1;
-        document.getElementById("amethyst").innerHTML = amethyst;
+function buyAmethystShard(){
+    if(money >= 50){
+        money = money - 50;
+        amethyst_shard = amethyst_shard + 1;
+        document.getElementById("money").innerHTML = money;
         document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
     }
 }
+
+function buyEmerald(){
+    if(amethyst_shard >= 500){
+     if(money >= 1000000){
+    if(gems >= 5){
+    amethyst_shard = amethyst_shard - 500;
+    money = money - 1000000;
+    gems = gems - 10;
+      amethyst = amethyst + 1;
+        document.getElementById("amethyst").innerHTML = amethyst;
+        document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
+    }
+}}
 
 
 function buyAutoClicker(){
