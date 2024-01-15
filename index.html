@@ -1,4 +1,4 @@
-welcome to clicker mania 1.0.6 1 matirial
+welcome to clicker mania 1.0.6 1 matirial 1 bug fix
 <p>do <span id="gem_click_cost">50</span> clicks then you will get 1 gem
 </p>
 
@@ -140,16 +140,17 @@ function buyAmethystShard(){
 }
 
 function buyEmerald(){
-    if(amethyst_shard >= 500){
+    if(amethyst >= 10){
      if(money >= 1000000){
     if(gems >= 5){
     amethyst_shard = amethyst_shard - 500;
     money = money - 1000000;
     gems = gems - 10;
-      amethyst = amethyst + 1;
+      emerald = emerald + 1;
         document.getElementById("amethyst").innerHTML = amethyst;
-        document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
-    }
+        document.getElementById("money").innerHTML = amethyst;
+        document.getElementById("gems").innerHTML = amethyst_shard;
+    }document.getElementById("emerald").innerHTML = amethyst_shard;
 }}}
 
 
