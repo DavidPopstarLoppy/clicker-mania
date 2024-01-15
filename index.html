@@ -1,4 +1,4 @@
-welcome to clicker mania 1.0.4 1 bug fix 2 materials Amethyst shard and amethyst
+welcome to clicker mania 1.0.5 2 upgrades autoclicker and money multiplyer
 <p>do <span id="gem_click_cost">50</span> clicks then you will get 1 gem
 </p>
 
@@ -7,6 +7,7 @@ welcome to clicker mania 1.0.4 1 bug fix 2 materials Amethyst shard and amethyst
 <p>crystals: <span id="crystals">0</span></p>
 <p>Amethyst: <span id="amethyst">0</span></p>
 <p>Amethyst shard: <span id="amethyst_shard">0</span></p>
+<p>Money Multipier: <span id="money_multiplier">1</span></p>
 
 <!--
 <p>clicks: <span id="clicks">0</span></p>
@@ -22,7 +23,12 @@ welcome to clicker mania 1.0.4 1 bug fix 2 materials Amethyst shard and amethyst
 
 <button id="buyAmethystShard" onclick="buyAmethystShard()">Buy Amethyst shard [cost: 50 money]</button>
 
-<button id="buyAmethyst" onclick="buyAmethyst()">buyAmethyst [cost: 10 Amethyst shards]</button>
+<button id="buyAmethyst" onclick="buyAmethyst()">buyAmethyst [cost: 100 Amethyst shards]</button>
+
+<button id="buyAutoClicker" onclick="buyAutoClicker()">buyAutoClicker [cost: <span id="auto_clicker_cost_amethyst_shards">2</span> Amethyst shards]</button>
+
+<button id="buyMoneyMultiplier" onclick="buyMoneyMultiplier()">buyMoneyMultiplier [cost: <span id="money_multiplier_cost_amethyst_shards">2</span> Amethyst shards]</button>
+
 
 <script>
     var money = 0;
@@ -38,6 +44,13 @@ welcome to clicker mania 1.0.4 1 bug fix 2 materials Amethyst shard and amethyst
     var gem_upgrade3 = 0;
     var gem_upgrade4 = 0;
     var gem_upgrade5 = 0;
+    var auto_clicker = 0;
+    var auto_clicker_delay = 1000;
+    var money_multiplier = 1;
+    var auto_clicker_cost_amethyst_shards = 2;
+    var money_multiplier_cost_amethyst_shards = 2;
+
+
 
 function addToMoney(amount){
     clicks = clicks + 1;
@@ -46,7 +59,7 @@ function addToMoney(amount){
         gems=gems+1;
         clicks_until_next_gem=gem_click_cost;
     }
-    money = money + amount;
+    money = money + (amount * money_multiplier);
     document.getElementById("money").innerHTML = money;
     //document.getElementById("clicks").innerHTML = clicks;
     document.getElementById("gems").innerHTML = gems;
@@ -115,12 +128,49 @@ function buyAmethystShard(){
 }
 
 function buyAmethyst(){
-    if(amethyst_shard >= 10){
-        amethyst_shard = amethyst_shard - 10;
+    if(amethyst_shard >= 100){
+        amethyst_shard = amethyst_shard - 100;
         amethyst = amethyst + 1;
         document.getElementById("amethyst").innerHTML = amethyst;
         document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
     }
 }
+
+
+function buyAutoClicker(){
+    if(amethyst_shard >= auto_clicker_cost_amethyst_shards){
+        amethyst_shard = amethyst_shard - auto_clicker_cost_amethyst_shards;
+        auto_clicker = auto_clicker + 1;
+        auto_clicker_delay = Math.round(auto_clicker_delay / 2);
+        auto_clicker_cost_amethyst_shards = Math.round(auto_clicker_cost_amethyst_shards *2.25);
+        
+        document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
+        document.getElementById("auto_clicker_cost_amethyst_shards").innerHTML = auto_clicker_cost_amethyst_shards;
+
+    }
+}
+
+function buyMoneyMultiplier(){
+    if(amethyst_shard >= money_multiplier_cost_amethyst_shards){
+        amethyst_shard = amethyst_shard - money_multiplier_cost_amethyst_shards;
+        money_multiplier = money_multiplier * 2;
+        money_multiplier_cost_amethyst_shards = Math.round(money_multiplier_cost_amethyst_shards *2.25);
+        
+        document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
+        document.getElementById("money_multiplier").innerHTML = money_multiplier;
+        document.getElementById("money_multiplier_cost_amethyst_shards").innerHTML = money_multiplier_cost_amethyst_shardsS;
+
+    }
+}
+
+
+
+setInterval(
+    function() {
+        if(auto_clicker!=0) {
+            addToMoney(1);
+        }
+    }, auto_clicker_delay
+); 
 
 </script>
