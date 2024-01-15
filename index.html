@@ -142,7 +142,7 @@ function buyAutoClicker(){
         amethyst_shard = amethyst_shard - auto_clicker_cost_amethyst_shards;
         auto_clicker = auto_clicker + 1;
         auto_clicker_delay = Math.round(auto_clicker_delay / 2);
-        auto_clicker_cost_amethyst_shards = Math.round(auto_clicker_cost_amethyst_shards *2.25);
+        auto_clicker_cost_amethyst_shards = Math.round(auto_clicker_cost_amethyst_shards *2.35);
         
         document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
         document.getElementById("auto_clicker_cost_amethyst_shards").innerHTML = auto_clicker_cost_amethyst_shards;
@@ -154,7 +154,7 @@ function buyMoneyMultiplier(){
     if(amethyst_shard >= money_multiplier_cost_amethyst_shards){
         amethyst_shard = amethyst_shard - money_multiplier_cost_amethyst_shards;
         money_multiplier = money_multiplier * 2;
-        money_multiplier_cost_amethyst_shards = Math.round(money_multiplier_cost_amethyst_shards *2.25);
+        money_multiplier_cost_amethyst_shards = Math.round(money_multiplier_cost_amethyst_shards *2.35);
         
         document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
         document.getElementById("money_multiplier").innerHTML = money_multiplier;
