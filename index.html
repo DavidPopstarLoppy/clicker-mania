@@ -8,6 +8,7 @@
 <body>
 
     welcome to clicker mania 1.0.7 4 bug fixes
+
     <p>do <span id="gem_click_cost">50</span> clicks then you will get 1 gem
     <p>
     
@@ -29,9 +30,9 @@
     
     <button id="buygemUpgrade" onclick="buyGemUpgrade()"><span id="upgradeText">Buy First gem Upgrade [cost: 5 gems]</span></button>
     
-    <button id="buyCrystal" onclick="buyCrystal()">Buy crystal [cost: 100 gems]</button>
+    <button id="buyCrystal" onclick="buyCrystal()">Buy crystal [cost: <span id="buyCrystalCostGems">100</span> gems]</button>
     
-    <button id="buyAmethystShard" onclick="buyAmethystShard()">Buy Amethyst shard [cost: 50 money]</button>
+    <button id="buyAmethystShard" onclick="buyAmethystShard()">Buy Amethyst shard [cost: <span id="buyAmethystShardCostMoney">50</span> money]</button>
     
     <button id="buyAmethyst" onclick="buyAmethyst()">buyAmethyst [cost: 100 Amethyst shards]</button>
     
@@ -41,6 +42,10 @@
     
     <button id="buyMoneyMultiplier" onclick="buyMoneyMultiplier()">buyMoneyMultiplier [cost: <span id="money_multiplier_cost_amethyst_shards">2</span> Amethyst shards]</button>
     
+    <button id="setBuyMulti1x" onclick="setBuyMulti(1)">1x</button>
+    <button id="setBuyMulti10x" onclick="setBuyMulti(10)">10x</button>
+    <button id="setBuyMulti100x" onclick="setBuyMulti(100)">100x</button>
+
       
 </body>
 </html>
@@ -61,10 +66,13 @@
     var gem_upgrade4 = 0;
     var gem_upgrade5 = 0;
     var auto_clicker = 0;
+    var buy_multi = 1;
     var auto_clicker_delay = 1000;
     var money_multiplier = 1;
     var auto_clicker_cost_amethyst_shards = 2;
     var money_multiplier_cost_amethyst_shards = 2;
+    var buyCrystalCostGems = 100; //100 gems 
+    var buyAmethystShardCostMoney = 50; //50 money
 
 
 
@@ -81,6 +89,13 @@ function addToMoney(amount){
     document.getElementById("gems").innerHTML = gems;
     //document.getElementById("gem_click_cost").innerHTML = gem_click_cost;
     //document.getElementById("clicks_until_next_gem").innerHTML = clicks_until_next_gem;
+}
+
+function setBuyMulti(multiplier) {
+   buy_multi = multiplier;
+
+   document.getElementById("buyCrystalCostGems").innerHTML = buyCrystalCostGems*multiplier;
+   document.getElementById("buyAmethystShardCostMoney").innerHTML = buyAmethystShardCostMoney*multiplier;
 }
 
 function buyGemUpgrade(){
@@ -125,9 +140,9 @@ function buyGemUpgrade(){
 
 
 function buyCrystal(){
-    if(gems >= 100){
-        gems = gems - 100;
-        crystals = crystals + 1;
+    if(gems >= buyCrystalCostGems*buy_multi){
+        gems = gems - buyCrystalCostGems*buy_multi;
+        crystals = crystals + (1*buy_multi);
         document.getElementById("gems").innerHTML = gems;
         document.getElementById("crystals").innerHTML = crystals;
         //document.getElementById("clicks_until_next_gem").innerHTML = clicks_until_next_gem;
@@ -135,9 +150,9 @@ function buyCrystal(){
 }
 
 function buyAmethystShard(){
-    if(money >= 50){
-        money = money - 50;
-        amethyst_shard = amethyst_shard + 1;
+    if(money >= buyAmethystShardCostMoney*buy_multi){
+        money = money - buyAmethystShardCostMoney*buy_multi;
+        amethyst_shard = amethyst_shard + (1*buy_multi);
         document.getElementById("money").innerHTML = money;
         document.getElementById("amethyst_shard").innerHTML = amethyst_shard;
     }
